@@ -40,19 +40,19 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NotesListener {
 
-//    public static final int REQUEST_CODE_ADD_NOTE = 1;
-//    public static final int REQUEST_CODE_UPDATE_NOTE = 2;
-//    public static final int REQUEST_CODE_SHOW_NOTES = 3;
-//    public static final int REQUEST_CODE_SELECT_IMAGE = 4;
-//    public static final int REQUEST_CODE_STORAGE_PERMISSION = 5;
-//
-//    private RecyclerView notesRecyclerView;
-//    private List<Note> noteList;
-//    private NotesAdapter notesAdapter;
-//
-//    private int noteClickedPosition = -1;
-//
-//    private AlertDialog dialogAddURL;
+    public static final int REQUEST_CODE_ADD_NOTE = 1;
+    public static final int REQUEST_CODE_UPDATE_NOTE = 2;
+    public static final int REQUEST_CODE_SHOW_NOTES = 3;
+    public static final int REQUEST_CODE_SELECT_IMAGE = 4;
+    public static final int REQUEST_CODE_STORAGE_PERMISSION = 5;
+
+    private RecyclerView notesRecyclerView;
+    private List<Note> noteList;
+    private NotesAdapter notesAdapter;
+
+    private int noteClickedPosition = -1;
+
+    private AlertDialog dialogAddURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,38 +71,38 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             }
         });
 
-//        notesRecyclerView = findViewById(R.id.notesRecyclerView);
-//        notesRecyclerView.setLayoutManager(
-//                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-//        );
+        notesRecyclerView = findViewById(R.id.notesRecyclerView);
+        notesRecyclerView.setLayoutManager(
+                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        );
 
         noteList = new ArrayList<>();
-//        notesAdapter = new NotesAdapter(noteList, this);
-//        notesRecyclerView.setAdapter(notesAdapter);
+        notesAdapter = new NotesAdapter(noteList, this);
+        notesRecyclerView.setAdapter(notesAdapter);
 
         getNotes(REQUEST_CODE_SHOW_NOTES, false);
 
-//        EditText inputSearch = findViewById(R.id.inputSearch);
+        EditText inputSearch = findViewById(R.id.inputSearch);
 
 
-//        inputSearch.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                notesAdapter.cancelTimer();
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                if (noteList.size() != 0) {
-//                    notesAdapter.searchNotes(s.toString());
-//                }
-//            }
-//        });
+        inputSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                notesAdapter.cancelTimer();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (noteList.size() != 0) {
+                    notesAdapter.searchNotes(s.toString());
+                }
+            }
+        });
 
         findViewById(R.id.imageAddNote).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                 );
             }
         });
+
 
         findViewById(R.id.imageAddImage).setOnClickListener(new View.OnClickListener() {
             @Override
